@@ -3,55 +3,56 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
-class TextTasks extends StatefulWidget {
-  const TextTasks({super.key});
+class TaskTask extends StatefulWidget {
+  const TaskTask({super.key});
 
   @override
-  State<TextTasks> createState() => _TextTasksState();
+  State<TaskTask> createState() => _TaskTaskState();
 }
 
-class _TextTasksState extends State<TextTasks> {
-  TextEditingController contoller1= TextEditingController();
+class _TaskTaskState extends State<TaskTask> {
+    TextEditingController contoller1= TextEditingController();
   TextEditingController controller2=TextEditingController();
-  var mybox=Hive.box('myname');
-  Map mp={};
-  List ls=[];
-  Timer? _timer;
-  //  var tme;
-// String? date;
-void frequentupdate(){
-  _timer=Timer.periodic(Duration(minutes: 1), (timer) {
-    settime();
-  },);
-}
-var minute;
-var hour;
-var day;
-var month;
-var year;
+  var mybox=Hive.box('mybox');
+    List li=[];
+      List ls=[];
+        Map mp={};
+//   Timer? _timer;
+//   //  var tme;
+// // String? date;
+// void frequentupdate(){
+//   _timer=Timer.periodic(Duration(minutes: 1), (timer) {
+//     settime();
+//   },);
+// }
+// var minute;
+// var hour;
+// var day;
+// var month;
+// var year;
 
-  void settime(){
-   setState(() {
+//   void settime(){
+//    setState(() {
 
-  day= DateTime.now().day; 
-  hour = DateTime.now().hour; 
-  minute = DateTime.now().minute; 
-  month = DateTime.now().month; 
-  year = DateTime.now().year; 
-  //  date = dateToday.toString().substring(0,10);
-  print(day);
-  print(month);
-  print(year);
-  }
-  );
-  }
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    settime();
-    frequentupdate();
-  }
+//   day= DateTime.now().day; 
+//   hour = DateTime.now().hour; 
+//   minute = DateTime.now().minute; 
+//   month = DateTime.now().month; 
+//   year = DateTime.now().year; 
+//   //  date = dateToday.toString().substring(0,10);
+//   print(day);
+//   print(month);
+//   print(year);
+//   }
+//   );
+//   }
+//   @override
+//   void initState() {
+//     // TODO: implement initState
+//     super.initState();
+//     settime();
+//     frequentupdate();
+//   }
 
   @override
   Widget build(BuildContext context) {
@@ -66,22 +67,21 @@ var year;
               letterSpacing: 1),
         ),
         actions: [IconButton(onPressed: () {
-          if(contoller1.text!=null){
+           if(li!=null){
 
-            if(mybox.get(1)==null){
-              mp={"title":contoller1.text,"description":controller2.text};
+            if(mybox.get(2)==null){
+              mp={"title":contoller1.text,"description":li};
             ls.add(mp);
-            mybox.put(1, ls);
+            mybox.put(2, ls);
             }else{
-              ls=mybox.get(1);
-              mp={"title":contoller1.text,"description":controller2.text};
+              ls=mybox.get(2);
+              mp={"title":contoller1.text,"description":li};
             ls.add(mp);
-            mybox.put(1, ls);
+            mybox.put(2, ls);
             }
 
           }
-        }, icon: Icon(Icons.task_alt_outlined))],
-        
+        }, icon: Icon(Icons.check))],
       ),
       body: Container(
         height: double.infinity,
@@ -95,7 +95,7 @@ var year;
               child: Expanded(
                   flex: 1,
                   child: TextField(
-                    controller: contoller1,
+                    
                             cursorColor: Colors.green,
                     decoration: InputDecoration(
                           labelText: "Title",
@@ -108,7 +108,6 @@ var year;
             ),
             Expanded(
                 child: TextField(
-                  controller: controller2,
               maxLines: 30,
               cursorColor: Colors.green,
               decoration: InputDecoration(alignLabelWithHint: true,
@@ -119,17 +118,17 @@ var year;
                     
                       borderSide: BorderSide(color: Colors.green))),
             )),
-            Container(
-              height: 80,
-              width: double.infinity,
-              padding: EdgeInsets.only(left: 15,right: 15),
-              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("$day-$month-$year".toString(),style: TextStyle(color: Colors.green)),
-                  Text("$hour:$minute",style: TextStyle(color: Colors.green),)
-                ],
-              ),
-            )
+            // Container(
+            //   height: 80,
+            //   width: double.infinity,
+            //   padding: EdgeInsets.only(left: 15,right: 15),
+            //   child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //     children: [
+            //       Text("$day-$month-$year".toString(),style: TextStyle(color: Colors.green)),
+            //       Text("$hour:$minute",style: TextStyle(color: Colors.green),)
+            //     ],
+            //   ),
+            // )
           ],
         ),
       ),
