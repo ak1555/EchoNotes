@@ -1,9 +1,15 @@
-import 'package:echonote/hey.dart';
-import 'package:echonote/hi.dart';
-import 'package:echonote/listTask.dart';
-import 'package:echonote/ooi.dart';
-import 'package:echonote/taskTask.dart';
-import 'package:echonote/textTask.dart';
+// import 'package:echonote/hey.dart';
+// import 'package:echonote/hi.dart';
+// import 'package:echonote/listTask.dart';
+// import 'package:echonote/ooi.dart';
+// import 'package:echonote/taskTask.dart';
+// import 'package:echonote/textTask.dart';
+import 'package:echonotes/hey.dart';
+import 'package:echonotes/hi.dart';
+import 'package:echonotes/listTask.dart';
+import 'package:echonotes/ooi.dart';
+import 'package:echonotes/taskTask.dart';
+import 'package:echonotes/textTask.dart';
 import 'package:flutter/material.dart';
 
 class Smple extends StatefulWidget {
@@ -45,7 +51,7 @@ class _SmpleState extends State<Smple> with TickerProviderStateMixin {
               SizedBox(
                 height: 10,
               ),
-              Container(
+              SizedBox(
                 height: 50,
                 child: TabBar(
                   indicator: BoxDecoration(
@@ -75,7 +81,7 @@ class _SmpleState extends State<Smple> with TickerProviderStateMixin {
               ),
               Expanded(
                 child: TabBarView(controller: _taccontroller,
-                  children: [HIpage(), Heypage(), Ooipage()]),
+                  children: [ HIpage(), Heypage(), Ooipage() ]),
               )
             ],
           ),
@@ -101,7 +107,7 @@ class _SmpleState extends State<Smple> with TickerProviderStateMixin {
               },
               backgroundColor: Colors.green.shade600,
               child: Icon(
-                Icons.format_list_numbered_rtl_rounded,
+                Icons.check_box,color: Colors.black,
                 // size: 35,
               ),
             ),
@@ -111,7 +117,7 @@ class _SmpleState extends State<Smple> with TickerProviderStateMixin {
               },
               backgroundColor: Colors.green.shade600,
               child: Icon(
-                Icons.description,
+                Icons.notes,
                color: Colors.black,
               ),
             ),

@@ -1,6 +1,6 @@
 {
-    "name": "echonote",
-    "short_name": "echonote",
+    "name": "echonotes",
+    "short_name": "echonotes",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

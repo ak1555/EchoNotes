@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "echonote" "\0"
+            VALUE "FileDescription", "echonotes" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "echonote" "\0"
+            VALUE "InternalName", "echonotes" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2024 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "echonote.exe" "\0"
-            VALUE "ProductName", "echonote" "\0"
+            VALUE "OriginalFilename", "echonotes.exe" "\0"
+            VALUE "ProductName", "echonotes" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

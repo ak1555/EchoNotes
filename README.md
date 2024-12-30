@@ -1,4 +1,4 @@
-# echonote
+# echonotes
 
 A new Flutter project.
 

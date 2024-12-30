@@ -1,4 +1,4 @@
-package com.example.echonote
+package com.example.echonotes
 
 import io.flutter.embedding.android.FlutterActivity
 

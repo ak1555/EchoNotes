@@ -1,7 +1,8 @@
-import 'dart:async';
+// import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
+// import 'package:hive/hive.dart';
 
 class TaskTask extends StatefulWidget {
   const TaskTask({super.key});
@@ -14,7 +15,7 @@ class _TaskTaskState extends State<TaskTask> {
     TextEditingController contoller1= TextEditingController();
   TextEditingController controller2=TextEditingController();
   var mybox=Hive.box('mybox');
-    List li=[];
+    // List li=[];
       List ls=[];
         Map mp={};
 //   Timer? _timer;
@@ -67,21 +68,22 @@ class _TaskTaskState extends State<TaskTask> {
               letterSpacing: 1),
         ),
         actions: [IconButton(onPressed: () {
-           if(li!=null){
 
-            if(mybox.get(2)==null){
-              mp={"title":contoller1.text,"description":li};
-            ls.add(mp);
-            mybox.put(2, ls);
-            }else{
-              ls=mybox.get(2);
-              mp={"title":contoller1.text,"description":li};
-            ls.add(mp);
-            mybox.put(2, ls);
-            }
-
+          if(mybox.get(3)==null){
+            mp={"title":contoller1.text,"description":controller2.text};
+          ls.add(mp);
+          mybox.put(3, ls);
+          }else{
+            ls=mybox.get(3);
+            mp={"title":contoller1.text,"description":controller2.text};
+          ls.add(mp);
+          mybox.put(3, ls);
           }
-        }, icon: Icon(Icons.check))],
+          contoller1.clear();
+          controller2.clear();
+          Navigator.pop(context);
+
+                }, icon: Icon(Icons.check,color: Colors.white,))],
       ),
       body: Container(
         height: double.infinity,
@@ -90,12 +92,12 @@ class _TaskTaskState extends State<TaskTask> {
         child: Column(
           children: [
             SizedBox(height: 15,),
-            Container(
+            SizedBox(
               height: 100,
               child: Expanded(
                   flex: 1,
                   child: TextField(
-                    
+                    controller: contoller1,
                             cursorColor: Colors.green,
                     decoration: InputDecoration(
                           labelText: "Title",
@@ -108,6 +110,7 @@ class _TaskTaskState extends State<TaskTask> {
             ),
             Expanded(
                 child: TextField(
+                  controller: controller2,
               maxLines: 30,
               cursorColor: Colors.green,
               decoration: InputDecoration(alignLabelWithHint: true,
