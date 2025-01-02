@@ -16,14 +16,7 @@ class _TextTasksState extends State<TextTasks> {
   var mybox = Hive.box('mybox');
   Map mp = {};
   List ls = [];
-  // Timer? _timer;e4
-  //  var tme;
-// String? date;
-// void frequentupdate(){
-//   _timer=Timer.periodic(Duration(minutes: 1), (timer) {
-//     settime();
-//   },);
-// }
+
   var minute;
   var hour;
   var day;
@@ -66,11 +59,15 @@ class _TextTasksState extends State<TextTasks> {
         actions: [
           IconButton(
               onPressed: () {
+                String t=  "$hour:$minute".toString();
+                String d= "$day-$month-$year".toString();
                 if (contoller1.text.isNotEmpty) {
                   if (mybox.get(1) == null) {
                     mp = {
                       "title": contoller1.text,
-                      "description": controller2.text
+                      "description": controller2.text,
+                      "time":t,
+                      "date":d
                     };
                     ls.add(mp);
                     mybox.put(1, ls);
@@ -78,7 +75,9 @@ class _TextTasksState extends State<TextTasks> {
                     ls = mybox.get(1);
                     mp = {
                       "title": contoller1.text,
-                      "description": controller2.text
+                      "description": controller2.text,
+                       "time":t,
+                       "date":d
                     };
                     ls.add(mp);
                     mybox.put(1, ls);
@@ -101,7 +100,7 @@ class _TextTasksState extends State<TextTasks> {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        padding: EdgeInsets.all(5),
+        padding: EdgeInsets.all(9),
         child: Column(
           children: [
             SizedBox(

@@ -16,7 +16,35 @@ class _ListTaskState extends State<ListTask> {
   var mybox = Hive.box('mybox');
   List ls = [];
   List li = [];
-Map mp={};
+  Map mp = {};
+
+  var minute;
+  var hour;
+  var day;
+  var month;
+  var year;
+
+  void settime() {
+    setState(() {
+      day = DateTime.now().day;
+      hour = DateTime.now().hour;
+      minute = DateTime.now().minute;
+      month = DateTime.now().month;
+      year = DateTime.now().year;
+      //  date = dateToday.toString().substring(0,10);
+      print(day);
+      print(month);
+      print(year);
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    settime();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,27 +57,45 @@ Map mp={};
               fontWeight: FontWeight.w500,
               letterSpacing: 1),
         ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                String t = "$hour:$minute".toString();
+                String d = "$day-$month-$year".toString();
+                if (mybox.get(2) == null) {
+                  mp = {
+                    "title": title.text,
+                    "description": li,
+                    "time": t,
+                    "date": d
+                  };
+                  ls.add(mp);
+                  mybox.put(2, ls);
+                } else {
+                  ls = mybox.get(2);
+                  mp = {
+                    "title": title.text,
+                    "description": li,
+                    "time": t,
+                    "date": d
+                  };
+                  ls.add(mp);
+                  mybox.put(2, ls);
+                }
+                title.clear();
 
-        actions: [IconButton(onPressed: () {
-    if(mybox.get(2)==null){
-            mp={"title":title.text,"description":li};
-          ls.add(mp);
-          mybox.put(2, ls);
-          }else{
-            ls=mybox.get(2);
-            mp={"title":title.text,"description":li};
-          ls.add(mp);
-          mybox.put(2, ls);
-          }
-          title.clear();
-
-          print(li);
-        }, icon: Icon(Icons.check,color: Colors.white,))],
+                Navigator.pop(context);
+              },
+              icon: Icon(
+                Icons.check,
+                color: Colors.white,
+              ))
+        ],
       ),
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        padding: EdgeInsets.all(5),
+        padding: EdgeInsets.all(8),
         child: Column(
           children: [
             SizedBox(
@@ -98,7 +144,7 @@ Map mp={};
                             li.add(_controller.text);
                             _controller.clear();
                           });
-                                                },
+                        },
                         icon: Icon(
                           Icons.add,
                           color: Colors.green,
@@ -111,16 +157,38 @@ Map mp={};
               itemCount: li.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  title: Text(li[index].toString(),style: TextStyle(fontSize: 20),),
-                  trailing:
-                      IconButton(onPressed: () {
+                  title: Text(
+                    li[index].toString(),
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  trailing: IconButton(
+                      onPressed: () {
                         setState(() {
                           li.removeAt(index);
                         });
-                      }, icon: Icon(Icons.close)),
+                      },
+                      icon: Icon(Icons.close)),
                 );
               },
-            ))
+            )),
+              //  Flexible(
+              //    child: Container(
+              //                  height: 80,
+              //                  width: double.infinity,
+              //                  padding: EdgeInsets.only(left: 15, right: 15),
+              //                  child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //     children: [
+              //       Text("$day-$month-$year".toString(),
+              //           style: TextStyle(color: Colors.green)),
+              //       Text(
+              //         "$hour:$minute",
+              //         style: TextStyle(color: Colors.green),
+              //       )
+              //     ],
+              //                  ),
+              //                ),
+              //  )
           ],
         ),
       ),

@@ -1,6 +1,5 @@
 import 'dart:math';
 
-// import 'package:echonotes/readpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -47,12 +46,11 @@ class _HIpageState extends State<HIpage> {
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, "readpage",arguments: ls[index]);
+                  Navigator.pushNamed(context, "readpage",arguments: index.toString());
                 },
                 child: Container(
                   padding: EdgeInsets.only(left: 8,top: 5,bottom: 5,right: 5),
                   decoration: BoxDecoration(
-                      // color: Colors.red.shade100,
                      
                      color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
                       borderRadius: BorderRadius.circular(15)),
@@ -60,11 +58,9 @@ class _HIpageState extends State<HIpage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          // SizedBox(
-                          //   width: 1,
-                          // ),
+
                           Text(
                             ls[index]['title'].toString(),
                             overflow: TextOverflow.ellipsis,
@@ -73,15 +69,10 @@ class _HIpageState extends State<HIpage> {
                                 fontSize: 19,
                                 letterSpacing: 1),
                           ),
-                          IconButton(
-                            padding: EdgeInsets.all(0),
-                            onPressed: () {
 
-                            },
-                            icon: Icon(Icons.more_vert),
-                          )
                         ],
                       ),
+                      SizedBox(height: 10,),
                       Text(ls[index]['description'].toString(),
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
