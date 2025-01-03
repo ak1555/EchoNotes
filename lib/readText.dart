@@ -13,9 +13,6 @@ class ReadPage extends StatefulWidget {
 class _ReadPageState extends State<ReadPage> {
   int? i;
   List ls = [];
-  // List li =[];
-  // List<bool> ll=[];
-  // Map mp={};
   var mybox = Hive.box('mybox');
   void getdata() {
     if (mybox.get(1) != null) {
@@ -31,9 +28,6 @@ class _ReadPageState extends State<ReadPage> {
     _timer = Timer.periodic(
       Duration(seconds: 1),
       (timer) {
-        // if(Duration()==Duration(seconds: 5).inSeconds   ){
-
-        // }
         getdata();
       },
     );
@@ -54,13 +48,110 @@ class _ReadPageState extends State<ReadPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.greenAccent.shade700,
-        title: Text(ls[i!]["title"].toString(),
-            style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 22)),
+        title: Center(
+          child: Text(ls[i!]["title"].toString(),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 22)),
+        ),
         actions: [
-          // IconButton(onPressed: () {}, icon: Icon(Icons.edit)),
+
+
+          IconButton(
+              onPressed: () {
+                TextEditingController ti = TextEditingController();
+                    TextEditingController ti2 = TextEditingController();
+                    setState(() {
+                      ti.text=ls[i!]["title"];
+                    ti2.text=ls[i!]["description"];
+                    });
+
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                     return  Scaffold(
+                      appBar: AppBar(
+                        title: Text("Edit",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
+                        backgroundColor: Colors.greenAccent.shade700,
+                      ),
+                       body: Container(
+                          height: double.infinity,
+                          width: double.infinity,
+                          padding: EdgeInsets.all(15),
+                          child: Column(
+                            children: [
+                              Flexible(
+                                  child: TextField(
+                                    controller: ti,
+                                    cursorColor: Colors.green,
+                                    decoration: InputDecoration(
+                                        labelText: "Title",
+                                        labelStyle: TextStyle(
+                                            color: Colors.green, fontSize: 20),
+                                        focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                width: 2, color: Colors.green)),
+                                        border: OutlineInputBorder(
+                                            borderSide:
+                                                BorderSide(color: Colors.green))),
+                                  )),
+                                  SizedBox(height: 15,),
+                              Expanded(
+                                  flex: 2,
+                                  child: TextField(
+                                    controller: ti2,
+                                    maxLines: 35,
+                                    cursorColor: Colors.green,
+                                    decoration: InputDecoration(
+                                        alignLabelWithHint: true,
+                                        labelText: "Description",
+                                        labelStyle: TextStyle(
+                                          color: Colors.green,
+                                          fontSize: 20,
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                width: 2, color: Colors.green)),
+                                        border: OutlineInputBorder(
+                                            borderSide:
+                                                BorderSide(color: Colors.green))),
+                                  )),
+                                  Container(
+                                    height: 100,
+                                    width: double.infinity,
+                                    child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                        TextButton(onPressed: () {
+                          Navigator.pop(context);
+                        }, child: Text("CANCEL",style: TextStyle(fontWeight: FontWeight.bold),)),
+                                TextButton(onPressed: () {
+                          ls[i!]["title"]=ti.text;
+                          ls[i!]["description"]=ti2.text;
+                          mybox.put(1, ls);
+                          Navigator.pop(context);
+                        }, child: Text("OK",style: TextStyle(fontWeight: FontWeight.bold) ))
+                                      ],
+                                    ),
+                                  )
+                            ],
+                          ),
+                        ),
+                     );
+                 
+                  },
+                );
+              },
+              icon: Icon(
+                Icons.edit,
+                color: Colors.white,
+              )),
+
+
+
+
+
           IconButton(
               onPressed: () {
                 ls.removeAt(i!);
@@ -99,7 +190,6 @@ class _ReadPageState extends State<ReadPage> {
               padding: EdgeInsets.only(left: 15, right: 15),
               height: 80,
               child: Row(
-                // crossAxisAlignment: CrossAxisAlignment.baseline,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
                 children: [

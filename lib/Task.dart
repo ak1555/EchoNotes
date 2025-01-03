@@ -47,7 +47,7 @@ class _OoipageState extends State<Ooipage> {
                 child: Container(
                   padding: EdgeInsets.all(5),
                   decoration: BoxDecoration(
-                      color: Colors.red.shade100,
+                      color: Colors.red.shade300,
                       borderRadius: BorderRadius.circular(15)),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -74,11 +74,12 @@ class _OoipageState extends State<Ooipage> {
                         ],
                       ),
                       SizedBox(height: 10,),
-                      Text(ls[index]['description'].toString(),maxLines: 6,
+                      Text(ls[index]['description'].toString()
+                      ,maxLines: 10,
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 17,
-                              letterSpacing: 1))
+                              letterSpacing: 0))
                     ],
                   ),
                 ),

@@ -16,6 +16,7 @@ class _HeypageState extends State<Heypage> {
 
   List ls=[];
   List li =[];
+
   void swtdata(){
     setState(() {
       if(mybox.get(2)!=null){
@@ -59,8 +60,9 @@ class _HeypageState extends State<Heypage> {
                   decoration: BoxDecoration(
                       // color: Colors.red.shade100,
                 
-                       color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
-                       
+                      //  color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
+                        color: Colors.red.shade300,
+
                       borderRadius: BorderRadius.circular(15)),
                   child: Column(
                     children: [

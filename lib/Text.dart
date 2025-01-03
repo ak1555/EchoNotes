@@ -52,7 +52,8 @@ class _HIpageState extends State<HIpage> {
                   padding: EdgeInsets.only(left: 8,top: 5,bottom: 5,right: 5),
                   decoration: BoxDecoration(
                      
-                     color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
+                    //  color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
+                     color: Colors.red.shade300,
                       borderRadius: BorderRadius.circular(15)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,7 +78,7 @@ class _HIpageState extends State<HIpage> {
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 17,
-                              letterSpacing: 1))
+                              letterSpacing: 0))
                     ],
                   ),
                 ),

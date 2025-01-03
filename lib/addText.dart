@@ -25,10 +25,10 @@ class _TextTasksState extends State<TextTasks> {
 
   void settime() {
     setState(() {
-      day = DateTime.now().day;
-      hour = DateTime.now().hour;
-      minute = DateTime.now().minute;
-      month = DateTime.now().month;
+      day = DateTime.now().day.toString().padLeft(2,'0');
+      hour = DateTime.now().hour.toString().padLeft(2,'0');
+      minute = DateTime.now().minute.toString().padLeft(2,'0');
+      month = DateTime.now().month.toString().padLeft(2,'0');
       year = DateTime.now().year;
       //  date = dateToday.toString().substring(0,10);
       print(day);
@@ -140,7 +140,8 @@ class _TextTasksState extends State<TextTasks> {
                       borderSide: BorderSide(width: 2, color: Colors.green)),
                   border: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.green))),
-            )),
+            )
+            ),
             Container(
               height: 80,
               width: double.infinity,

@@ -14,6 +14,7 @@ class _ListReadState extends State<ListRead> {
   int? i;
   List ls= [];
   List li =[];
+  // List llii =[];
   List<bool> ll=[];
   Map mp={};
   var mybox=Hive.box('mybox');
@@ -62,8 +63,148 @@ class _ListReadState extends State<ListRead> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.greenAccent.shade700,
-        title: Text(ls[i!]['title'],style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)),
-        actions: [IconButton(onPressed: () {
+        title: Center(child:
+         Text(ls[i!]['title'],style:
+          TextStyle(color: Colors.white,
+          fontWeight: FontWeight.bold,fontSize: 22))),
+        actions: [
+
+          // =============================================================================================================================
+
+
+          // IconButton(
+          //     onPressed: () {
+          //       TextEditingController ti = TextEditingController();
+          //           TextEditingController ti2 = TextEditingController();
+          //           setState(() {
+          //             ti.text=ls[i!]["title"];
+          //           // ti2.text=ls[i!]["description"];
+          //           llii=ls[i!]["description"];
+          //           });
+
+          //       showDialog(
+          //         context: context,
+          //         builder: (context) {
+          //            return  Scaffold(
+          //             appBar: AppBar(
+          //               title: Text("Edit",style: TextStyle(
+          //                 fontWeight: FontWeight.bold,color: Colors.white)),
+          //               backgroundColor: Colors.greenAccent.shade700,
+          //             ),
+          //              body: Container(
+          //                 height: double.infinity,
+          //                 width: double.infinity,
+          //                 padding: EdgeInsets.all(15),
+          //                 child: Column(
+          //                   children: [
+          //                     SizedBox(
+          //     height: 80,
+          //     child: Expanded(
+          //         flex: 1,
+          //         child: TextField(
+          //           controller: ti,
+          //           cursorColor: Colors.green,
+          //           decoration: InputDecoration(
+          //               labelText: "Title",
+          //               labelStyle:
+          //                   TextStyle(color: Colors.green, fontSize: 20),
+          //               focusedBorder: OutlineInputBorder(
+          //                   borderSide:
+          //                       BorderSide(width: 2, color: Colors.green)),
+          //               border: OutlineInputBorder(
+          //                   borderSide: BorderSide(color: Colors.green))),
+          //         )),
+          //   ),
+          //   SizedBox(
+          //     height: 80,
+          //     // color: Colors.pink,
+          //     child: Expanded(
+          //         child: TextField(
+          //       controller: ti2,
+          //       // maxLines: 30,
+          //       cursorColor: Colors.green,
+          //       decoration: InputDecoration(
+          //           alignLabelWithHint: true,
+          //           labelText: "Description",
+          //           labelStyle: TextStyle(
+          //             color: Colors.green,
+          //             fontSize: 20,
+          //           ),
+          //           focusedBorder: OutlineInputBorder(
+          //               borderSide: BorderSide(width: 2, color: Colors.green)),
+          //           border: OutlineInputBorder(
+          //               borderSide: BorderSide(color: Colors.green)),
+          //           suffixIcon: IconButton(
+          //               onPressed: () {
+          //                 setState(() {
+          //                   llii.add(ti2.text);
+          //                   ti2.clear();
+          //                   print(llii);
+          //                 });
+          //               },
+          //               icon: Icon(
+          //                 Icons.add,
+          //                 color: Colors.green,
+          //                 size: 30,
+          //               ))),
+          //     )),
+          //   ),
+
+          //   Expanded(
+          //       child: ListView.builder(
+          //     itemCount: llii.length,
+          //     itemBuilder: (context, index) {
+          //       return ListTile(
+          //         title: Text(
+          //           llii[index].toString(),
+          //           style: TextStyle(fontSize: 20),
+          //         ),
+          //         trailing: IconButton(
+          //             onPressed: () {
+          //               setState(() {
+          //                 llii.removeAt(index);
+          //               });
+          //             },
+          //             icon: Icon(Icons.close)),
+          //       );
+          //     },
+          //   )),
+          //   Container(
+          //                           height: 100,
+          //                           width: double.infinity,
+          //                           child: Row(
+          //                             mainAxisAlignment: MainAxisAlignment.end,
+          //                             children: [
+                                
+          //               TextButton(onPressed: () {
+          //                 Navigator.pop(context);
+          //               }, child: Text("CANCEL",style: TextStyle(fontWeight: FontWeight.bold),)),
+          //                       TextButton(onPressed: () {
+          //                 ls[i!]["title"]=ti.text;
+          //                 ls[i!]["description"]=llii;
+          //                 mybox.put(2, ls);
+          //                 Navigator.pop(context);
+          //               }, child: Text("OK",style: TextStyle(fontWeight: FontWeight.bold) ))
+                      
+             
+          //                             ],
+          //                           ),
+          //                         )
+          //                   ],
+          //                 ),
+          //               ),
+          //            );
+                 
+          //         },
+          //       );
+                
+          //     },
+          //     icon: Icon(Icons.edit,color: Colors.white,),
+          //     ),
+          // =============================================================================================================================
+          
+          
+          IconButton(onPressed: () {
           ls.removeAt(i!);
 mybox.put(2, ls);
 Navigator.pop(context);
