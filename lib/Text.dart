@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -22,11 +23,23 @@ class _HIpageState extends State<HIpage> {
       });
     }
   }
+  Timer? _timer;
+
+  void tmer() {
+    _timer = Timer.periodic(
+      Duration(seconds: 1),
+      (timer) {
+        // getdata();
+initfun();
+      },
+    );
+  }
 
   void initState() {
     // TODO: implement initState
     super.initState();
     initfun();
+    tmer();
   }
 
   @override

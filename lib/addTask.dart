@@ -1,7 +1,10 @@
 // import 'dart:async';
 
+import 'package:echonotes/Task.dart';
+import 'package:echonotes/z.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:table_calendar/table_calendar.dart';
 // import 'package:hive/hive.dart';
 
 class TaskTask extends StatefulWidget {
@@ -23,6 +26,8 @@ class _TaskTaskState extends State<TaskTask> {
   var day;
   var month;
   var year;
+  DateTime _selectedDay = DateTime.now();
+  DateTime _focusedDay = DateTime.now();
 
   void settime() {
     setState(() {
@@ -84,7 +89,8 @@ class _TaskTaskState extends State<TaskTask> {
                 }
                 contoller1.clear();
                 controller2.clear();
-                Navigator.pop(context);
+                // Navigator.pop(context);
+                Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Ooipage(),));
               },
               icon: Icon(
                 Icons.check,
@@ -143,11 +149,86 @@ class _TaskTaskState extends State<TaskTask> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("$day-$month-$year".toString(),
-                      style: TextStyle(color: Colors.green)),
-                  Text(
-                    "$hour:$minute",
-                    style: TextStyle(color: Colors.green),
+                  GestureDetector(
+                    onTap: () {
+                      showDialog(context: context, builder: (context) {
+                        return
+                        //  AlertDialog(
+                        //   title: 
+                          Scaffold(
+                            body: Container(
+                              height: double.infinity,
+                              width: double.infinity,
+                              padding: EdgeInsets.all(8),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                TableCalendar(
+                                  focusedDay: _focusedDay,
+                                  firstDay: DateTime.utc(2000, 1, 1),
+                                  lastDay: DateTime.utc(2100, 12, 31),
+                                  selectedDayPredicate: (day) {
+                                    return isSameDay(_selectedDay, day);
+                                  },
+                                  onDaySelected: (selectedDay, focusedDay) {
+                                    print(selectedDay.day);
+                                    setState(() {
+                                      _selectedDay = selectedDay;
+                                      _focusedDay = focusedDay; // Update focused day as well
+                                      day=selectedDay.day;
+                                      month=selectedDay.month;
+                                      year=selectedDay.year;
+                                    });
+                                  },
+                                  calendarStyle: CalendarStyle(
+                                    selectedDecoration: BoxDecoration(
+                                      color: Colors.blue,
+                                      shape: BoxShape.circle,
+                                    ),
+                                    todayDecoration: BoxDecoration(
+                                      color: Colors.orange,
+                                      shape: BoxShape.circle,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 20),
+                                Text(
+                                  // "Selected Day: ${_selectedDay.toLocal()}",
+                                  "Selected Day: ${_selectedDay.day}",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                      Container(
+                                        height: 65,
+                                        width: double.infinity,
+                                        child: TextButton(style: TextButton.styleFrom(
+                                          backgroundColor: Colors.greenAccent.shade700
+                                        ),
+                                          onPressed: () {
+                                                                      Navigator.pop(context);
+                                                                    }, child: Text('OK')),
+                                      )
+                              ],
+                            ),
+                          ),
+                          );
+                        //   actions: [
+                        //     TextButton(onPressed: () {
+                        //       Navigator.pop(context);
+                        //     }, child: Text('OK'))
+                        //   ],
+                        // );
+                      },);
+                    },
+                    child: Text("$day-$month-$year".toString(),
+                        style: TextStyle(color: Colors.green)),
+                  ),
+
+                  GestureDetector(
+                    // onTap: 
+                    child: Text(
+                      "$hour:$minute",
+                      style: TextStyle(color: Colors.green),
+                    ),
                   )
                 ],
               ),

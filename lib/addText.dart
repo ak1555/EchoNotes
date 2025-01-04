@@ -25,10 +25,10 @@ class _TextTasksState extends State<TextTasks> {
 
   void settime() {
     setState(() {
-      day = DateTime.now().day.toString().padLeft(2,'0');
-      hour = DateTime.now().hour.toString().padLeft(2,'0');
-      minute = DateTime.now().minute.toString().padLeft(2,'0');
-      month = DateTime.now().month.toString().padLeft(2,'0');
+      day = DateTime.now().day.toString().padLeft(2, '0');
+      hour = DateTime.now().hour.toString().padLeft(2, '0');
+      minute = DateTime.now().minute.toString().padLeft(2, '0');
+      month = DateTime.now().month.toString().padLeft(2, '0');
       year = DateTime.now().year;
       //  date = dateToday.toString().substring(0,10);
       print(day);
@@ -59,15 +59,15 @@ class _TextTasksState extends State<TextTasks> {
         actions: [
           IconButton(
               onPressed: () {
-                String t=  "$hour:$minute".toString();
-                String d= "$day-$month-$year".toString();
+                String t = "$hour:$minute".toString();
+                String d = "$day-$month-$year".toString();
                 if (contoller1.text.isNotEmpty) {
                   if (mybox.get(1) == null) {
                     mp = {
                       "title": contoller1.text,
                       "description": controller2.text,
-                      "time":t,
-                      "date":d
+                      "time": t,
+                      "date": d
                     };
                     ls.add(mp);
                     mybox.put(1, ls);
@@ -76,8 +76,8 @@ class _TextTasksState extends State<TextTasks> {
                     mp = {
                       "title": contoller1.text,
                       "description": controller2.text,
-                       "time":t,
-                       "date":d
+                      "time": t,
+                      "date": d
                     };
                     ls.add(mp);
                     mybox.put(1, ls);
@@ -131,7 +131,7 @@ class _TextTasksState extends State<TextTasks> {
               cursorColor: Colors.green,
               decoration: InputDecoration(
                   alignLabelWithHint: true,
-                  labelText: "Description",
+                  labelText: "Text",
                   labelStyle: TextStyle(
                     color: Colors.green,
                     fontSize: 20,
@@ -140,8 +140,7 @@ class _TextTasksState extends State<TextTasks> {
                       borderSide: BorderSide(width: 2, color: Colors.green)),
                   border: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.green))),
-            )
-            ),
+            )),
             Container(
               height: 80,
               width: double.infinity,
