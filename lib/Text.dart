@@ -35,6 +35,7 @@ initfun();
     );
   }
 
+
   void initState() {
     // TODO: implement initState
     super.initState();
@@ -45,10 +46,10 @@ initfun();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizedBox(
+      body: Container(
           height: double.infinity,
           width: double.infinity,
-
+          padding: EdgeInsets.only(left: 7,right: 7),
 
           child: MasonryGridView.builder(
             itemCount: ls.length,
@@ -65,7 +66,6 @@ initfun();
                   padding: EdgeInsets.only(left: 8,top: 5,bottom: 5,right: 5),
                   decoration: BoxDecoration(
                      
-                    //  color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
                      color: Colors.red.shade300,
                       borderRadius: BorderRadius.circular(15)),
                   child: Column(
@@ -75,23 +75,147 @@ initfun();
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
 
-                          Text(
-                            ls[index]['title'].toString(),
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 19,
-                                letterSpacing: 1),
+
+         DropdownButton<String>(underline: Container(height: 0,),
+
+hint:     Container(
+                            width: 110,
+                            child: Text(
+                              ls[index]['title'].toString(),
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 19,
+                                  letterSpacing: 1),
+                            ),
                           ),
+
+          // value: selectedValue,
+          items: [
+            DropdownMenuItem(
+              value: 'Edit',
+              child: GestureDetector(
+                onTap: () {
+                  TextEditingController ti = TextEditingController();
+                    TextEditingController ti2 = TextEditingController();
+                    setState(() {
+                      ti.text=ls[index]["title"];
+                    ti2.text=ls[index]["description"];
+                    });
+
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                     return  Scaffold(
+                      appBar: AppBar(
+                        title: Text("Edit",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white)),
+                        backgroundColor: Colors.greenAccent.shade700,
+                      ),
+                       body: Container(
+                          height: double.infinity,
+                          width: double.infinity,
+                          padding: EdgeInsets.all(15),
+                          child: Column(
+                            children: [
+                              Flexible(
+                                  // flex: 1,
+                                  child: TextField(
+                                    controller: ti,
+                                    cursorColor: Colors.green,
+                                    decoration: InputDecoration(
+                                        labelText: "Title",
+                                        labelStyle: TextStyle(
+                                            color: Colors.green, fontSize: 20),
+                                        focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                width: 2, color: Colors.green)),
+                                        border: OutlineInputBorder(
+                                            borderSide:
+                                                BorderSide(color: Colors.green))),
+                                  )),
+                                  SizedBox(height: 15,),
+                              Expanded(
+                                  flex: 2,
+                                  child: TextField(
+                                    controller: ti2,
+                                    maxLines: 35,
+                                    cursorColor: Colors.green,
+                                    decoration: InputDecoration(
+                                        alignLabelWithHint: true,
+                                        labelText: "Description",
+                                        labelStyle: TextStyle(
+                                          color: Colors.green,
+                                          fontSize: 20,
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                width: 2, color: Colors.green)),
+                                        border: OutlineInputBorder(
+                                            borderSide:
+                                                BorderSide(color: Colors.green))),
+                                  )),
+                                  Container(
+                                    height: 100,
+                                    width: double.infinity,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                
+                        TextButton(onPressed: () {
+                          Navigator.pop(context);
+                        }, child: Text("CANCEL",style: TextStyle(fontWeight: FontWeight.bold),)),
+                                TextButton(onPressed: () {
+                          ls[index]["title"]=ti.text;
+                          ls[index]["description"]=ti2.text;
+                          mybox.put(3, ls);
+                          Navigator.pop(context);
+                        }, child: Text("OK",style: TextStyle(fontWeight: FontWeight.bold) ))
+                      
+             
+                                      ],
+                                    ),
+                                  )
+                            ],
+                          ),
+                        ),
+                     );
+                 
+                  },
+                );
+                },
+                child: Text('Edit')),
+            ),
+            DropdownMenuItem(
+              value: 'Delete',
+              child: GestureDetector(onTap: () {
+                  ls.removeAt(index);
+                mybox.put(1, ls);
+              }, child: Text('Delete')),
+            ),
+          ],
+          onChanged: (String? newValue) {
+            setState(() {
+              // selectedValue = newValue;
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('Selected: $newValue')),
+              );
+            });
+          },
+        ),
+      
+      
+
 
                         ],
                       ),
-                      SizedBox(height: 10,),
+                      // SizedBox(height: 2,),
+
                       Text(ls[index]['description'].toString(),
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 17,
-                              letterSpacing: 0))
+                              letterSpacing: 0)),
+                               SizedBox(height: 2,),
                     ],
                   ),
                 ),

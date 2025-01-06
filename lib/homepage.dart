@@ -85,14 +85,14 @@ class _SmpleState extends State<Smple> with TickerProviderStateMixin {
               children: [
                 FloatingActionButton.small(
                   onPressed: () {
+                    // Navigator.of(context).push(MaterialPageRoute(
+                    //   builder: (context) => TextTasks(),
                     Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => TextTasks(),
+                      builder: (context) => TaskTask(),
                     ));
                   },
                   backgroundColor: Colors.greenAccent.shade700,
-                  child: Icon(
-                      Icons.task_alt_outlined
-                      ),
+                  child: Icon(Icons.task_alt_outlined),
                 ),
                 FloatingActionButton.small(
                   onPressed: () {
@@ -102,13 +102,17 @@ class _SmpleState extends State<Smple> with TickerProviderStateMixin {
                   },
                   backgroundColor: Colors.greenAccent.shade700,
                   child: Icon(
-                    Icons.check_box, color: Colors.black,
+                    Icons.check_box,
+                    color: Colors.black,
                   ),
                 ),
                 FloatingActionButton(
                   onPressed: () {
+                    // Navigator.of(context).push(MaterialPageRoute(
+                    //   builder: (context) => TaskTask(),
+
                     Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => TaskTask(),
+                      builder: (context) => TextTasks(),
                     ));
                   },
                   backgroundColor: Colors.greenAccent.shade700,

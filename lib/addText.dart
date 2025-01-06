@@ -48,9 +48,10 @@ class _TextTasksState extends State<TextTasks> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        foregroundColor: Colors.white,
         backgroundColor: Colors.green,
         title: Text(
-          "Add New Task",
+          "Add New Note",
           style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.w500,
@@ -131,7 +132,7 @@ class _TextTasksState extends State<TextTasks> {
               cursorColor: Colors.green,
               decoration: InputDecoration(
                   alignLabelWithHint: true,
-                  labelText: "Text",
+                  labelText: "Content",
                   labelStyle: TextStyle(
                     color: Colors.green,
                     fontSize: 20,

@@ -59,7 +59,6 @@ class _HeypageState extends State<Heypage> {
                   padding: EdgeInsets.all(5),
                   decoration: BoxDecoration(
                       // color: Colors.red.shade100,
-                
                       //  color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
                         color: Colors.red.shade300,
 

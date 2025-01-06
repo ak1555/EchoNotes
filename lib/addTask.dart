@@ -1,5 +1,7 @@
 // import 'dart:async';
 
+import 'dart:async';
+
 import 'package:echonotes/Task.dart';
 import 'package:echonotes/z.dart';
 import 'package:flutter/material.dart';
@@ -41,6 +43,15 @@ class _TaskTaskState extends State<TaskTask> {
       print(year);
     });
   }
+// Timer? _timer;
+//    void tmer() {
+//     _timer = Timer.periodic(
+//       Duration(seconds: 1),
+//       (timer) {
+//         settime();
+//       },
+//     );
+//   }
 
   @override
   void initState() {
@@ -48,12 +59,14 @@ class _TaskTaskState extends State<TaskTask> {
     super.initState();
     settime();
     // frequentupdate();
+    // tmer();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        foregroundColor: Colors.white,
         backgroundColor: Colors.green,
         title: Text(
           "Add New Task",
@@ -72,7 +85,10 @@ class _TaskTaskState extends State<TaskTask> {
                     "title": contoller1.text,
                     "description": controller2.text,
                     "time": t,
-                    "date": d
+                    "date": d,
+                    "day":day,
+                    "month":month,
+                    "year":year
                   };
                   ls.add(mp);
                   mybox.put(3, ls);
@@ -82,7 +98,10 @@ class _TaskTaskState extends State<TaskTask> {
                     "title": contoller1.text,
                     "description": controller2.text,
                     "time": t,
-                    "date": d
+                    "date": d,
+                    "day":day,
+                    "month":month,
+                    "year":year
                   };
                   ls.add(mp);
                   mybox.put(3, ls);
@@ -172,12 +191,17 @@ class _TaskTaskState extends State<TaskTask> {
                                   },
                                   onDaySelected: (selectedDay, focusedDay) {
                                     print(selectedDay.day);
+                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Selected date: ${selectedDay.day}/${selectedDay.month}/${selectedDay.year}')));
+                                  
                                     setState(() {
                                       _selectedDay = selectedDay;
                                       _focusedDay = focusedDay; // Update focused day as well
                                       day=selectedDay.day;
                                       month=selectedDay.month;
                                       year=selectedDay.year;
+                                    });
+                                      setState(() {
+                                       _selectedDay = selectedDay;
                                     });
                                   },
                                   calendarStyle: CalendarStyle(
@@ -194,7 +218,7 @@ class _TaskTaskState extends State<TaskTask> {
                                 SizedBox(height: 20),
                                 Text(
                                   // "Selected Day: ${_selectedDay.toLocal()}",
-                                  "Selected Day: ${_selectedDay.day}",
+                                  "Current Day: ${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
                                   style: TextStyle(fontSize: 16),
                                 ),
                                       Container(
@@ -211,12 +235,6 @@ class _TaskTaskState extends State<TaskTask> {
                             ),
                           ),
                           );
-                        //   actions: [
-                        //     TextButton(onPressed: () {
-                        //       Navigator.pop(context);
-                        //     }, child: Text('OK'))
-                        //   ],
-                        // );
                       },);
                     },
                     child: Text("$day-$month-$year".toString(),
