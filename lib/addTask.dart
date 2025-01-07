@@ -3,6 +3,7 @@
 import 'dart:async';
 
 import 'package:echonotes/Task.dart';
+import 'package:echonotes/homepage.dart';
 import 'package:echonotes/z.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -109,7 +110,7 @@ class _TaskTaskState extends State<TaskTask> {
                 contoller1.clear();
                 controller2.clear();
                 // Navigator.pop(context);
-                Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Ooipage(),));
+                Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Smple(),));
               },
               icon: Icon(
                 Icons.check,
@@ -133,6 +134,7 @@ class _TaskTaskState extends State<TaskTask> {
                   child: TextField(
                     controller: contoller1,
                     cursorColor: Colors.green,
+                    maxLength: 10,
                     decoration: InputDecoration(
                         labelText: "Title",
                         labelStyle:
@@ -182,6 +184,7 @@ class _TaskTaskState extends State<TaskTask> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
+                              
                                 TableCalendar(
                                   focusedDay: _focusedDay,
                                   firstDay: DateTime.utc(2000, 1, 1),
@@ -196,6 +199,7 @@ class _TaskTaskState extends State<TaskTask> {
                                     setState(() {
                                       _selectedDay = selectedDay;
                                       _focusedDay = focusedDay; // Update focused day as well
+                                      // _focusedDay = selectedDay; // Update focused day as well
                                       day=selectedDay.day;
                                       month=selectedDay.month;
                                       year=selectedDay.year;

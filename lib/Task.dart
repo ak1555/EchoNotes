@@ -50,16 +50,16 @@ class _OoipageState extends State<Ooipage> {
 
   void vv() {
     listlll = List.generate(ls.length, (index) => false);
-    print(listlll);
+    // print(listlll);
     List o = [];
 
     try {
       List o = [];
-      print(o.length);
+      // print(o.length);
       if (mybox.get(11) != null) {
         o = mybox.get(11);
         for (int i = 0; i <= o.length; i++) {
-          print(i);
+          // print(i);
           if (o[i] == true) {
             listlll[i] = true;
           }
@@ -68,7 +68,7 @@ class _OoipageState extends State<Ooipage> {
     } catch (e) {
       print(e);
     }
-    print(listlll);
+    // print(listlll);
   }
 
   void initState() {
@@ -87,6 +87,7 @@ class _OoipageState extends State<Ooipage> {
         body: Container(
             height: double.infinity,
             width: double.infinity,
+            padding: EdgeInsets.only(left: 7, right: 7),
             child: MasonryGridView.builder(
               itemCount: ls.length,
               mainAxisSpacing: 5,
@@ -179,7 +180,6 @@ class _OoipageState extends State<Ooipage> {
                                 underline: Container(
                                   height: 0,
                                 ),
-            
                                 items: [
                                   DropdownMenuItem(
                                     value: 'Edit',
@@ -330,18 +330,17 @@ class _OoipageState extends State<Ooipage> {
                                           List m = mybox.get(11);
                                           m.removeAt(index);
                                           mybox.put(11, m);
-                                            ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                          content: Text('Task Deleted')),
-                                    );
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                                content: Text('Task Deleted')),
+                                          );
                                         },
                                         child: Text('Delete')),
                                   ),
                                 ],
                                 onChanged: (String? newValue) {
-                                  setState(() {
-
-                                  });
+                                  setState(() {});
                                 },
                               ),
                             ],

@@ -26,12 +26,12 @@ class _ListTaskState extends State<ListTask> {
 
   void settime() {
     setState(() {
-      day = DateTime.now().day.toString().padLeft(2,'0');
-      hour = DateTime.now().hour.toString().padLeft(2,'0');
-      minute = DateTime.now().minute.toString().padLeft(2,'0');
-      month = DateTime.now().month.toString().padLeft(2,'0');
+      day = DateTime.now().day.toString().padLeft(2, '0');
+      hour = DateTime.now().hour.toString().padLeft(2, '0');
+      minute = DateTime.now().minute.toString().padLeft(2, '0');
+      month = DateTime.now().month.toString().padLeft(2, '0');
       year = DateTime.now().year;
-    //  var  te = DateTime.now().minute.;
+      //  var  te = DateTime.now().minute.;
       print(day);
       print(month);
       print(year);
@@ -130,7 +130,7 @@ class _ListTaskState extends State<ListTask> {
                 cursorColor: Colors.green,
                 decoration: InputDecoration(
                     alignLabelWithHint: true,
-                    labelText: "Description",
+                    labelText: "Content",
                     labelStyle: TextStyle(
                       color: Colors.green,
                       fontSize: 20,
@@ -141,10 +141,16 @@ class _ListTaskState extends State<ListTask> {
                         borderSide: BorderSide(color: Colors.green)),
                     suffixIcon: IconButton(
                         onPressed: () {
-                          setState(() {
-                            li.add(_controller.text);
-                            _controller.clear();
-                          });
+                          if (_controller.text != '') {
+                            setState(() {
+                              li.add(_controller.text);
+                              _controller.clear();
+                            });
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text('Empty List')));
+                            print('empty');
+                          }
                         },
                         icon: Icon(
                           Icons.add,
@@ -172,24 +178,24 @@ class _ListTaskState extends State<ListTask> {
                 );
               },
             )),
-              //  Flexible(
-              //    child: Container(
-              //                  height: 80,
-              //                  width: double.infinity,
-              //                  padding: EdgeInsets.only(left: 15, right: 15),
-              //                  child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //     children: [
-              //       Text("$day-$month-$year".toString(),
-              //           style: TextStyle(color: Colors.green)),
-              //       Text(
-              //         "$hour:$minute",
-              //         style: TextStyle(color: Colors.green),
-              //       )
-              //     ],
-              //                  ),
-              //                ),
-              //  )
+            //  Flexible(
+            //    child: Container(
+            //                  height: 80,
+            //                  width: double.infinity,
+            //                  padding: EdgeInsets.only(left: 15, right: 15),
+            //                  child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //     children: [
+            //       Text("$day-$month-$year".toString(),
+            //           style: TextStyle(color: Colors.green)),
+            //       Text(
+            //         "$hour:$minute",
+            //         style: TextStyle(color: Colors.green),
+            //       )
+            //     ],
+            //                  ),
+            //                ),
+            //  )
           ],
         ),
       ),

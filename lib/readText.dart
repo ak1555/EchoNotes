@@ -48,6 +48,7 @@ class _ReadPageState extends State<ReadPage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.greenAccent.shade700,
+        foregroundColor: Colors.white,
         title: Center(
           child: Text(ls[i!]["title"].toString(),
               style: TextStyle(
@@ -56,90 +57,103 @@ class _ReadPageState extends State<ReadPage> {
                   fontSize: 22)),
         ),
         actions: [
-
-
           IconButton(
               onPressed: () {
                 TextEditingController ti = TextEditingController();
-                    TextEditingController ti2 = TextEditingController();
-                    setState(() {
-                      ti.text=ls[i!]["title"];
-                    ti2.text=ls[i!]["description"];
-                    });
+                TextEditingController ti2 = TextEditingController();
+                setState(() {
+                  ti.text = ls[i!]["title"];
+                  ti2.text = ls[i!]["description"];
+                });
 
                 showDialog(
                   context: context,
                   builder: (context) {
-                     return  Scaffold(
+                    return Scaffold(
                       appBar: AppBar(
-                        title: Text("Edit",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white),),
+                        title: Text(
+                          "Edit",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, color: Colors.white),
+                        ),
                         backgroundColor: Colors.greenAccent.shade700,
                       ),
-                       body: Container(
-                          height: double.infinity,
-                          width: double.infinity,
-                          padding: EdgeInsets.all(15),
-                          child: Column(
-                            children: [
-                              Flexible(
-                                  child: TextField(
-                                    controller: ti,
-                                    cursorColor: Colors.green,
-                                    decoration: InputDecoration(
-                                        labelText: "Title",
-                                        labelStyle: TextStyle(
-                                            color: Colors.green, fontSize: 20),
-                                        focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                width: 2, color: Colors.green)),
-                                        border: OutlineInputBorder(
-                                            borderSide:
-                                                BorderSide(color: Colors.green))),
-                                  )),
-                                  SizedBox(height: 15,),
-                              Expanded(
-                                  flex: 2,
-                                  child: TextField(
-                                    controller: ti2,
-                                    maxLines: 35,
-                                    cursorColor: Colors.green,
-                                    decoration: InputDecoration(
-                                        alignLabelWithHint: true,
-                                        labelText: "Description",
-                                        labelStyle: TextStyle(
-                                          color: Colors.green,
-                                          fontSize: 20,
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                width: 2, color: Colors.green)),
-                                        border: OutlineInputBorder(
-                                            borderSide:
-                                                BorderSide(color: Colors.green))),
-                                  )),
-                                  Container(
-                                    height: 100,
-                                    width: double.infinity,
-                                    child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                        TextButton(onPressed: () {
-                          Navigator.pop(context);
-                        }, child: Text("CANCEL",style: TextStyle(fontWeight: FontWeight.bold),)),
-                                TextButton(onPressed: () {
-                          ls[i!]["title"]=ti.text;
-                          ls[i!]["description"]=ti2.text;
-                          mybox.put(1, ls);
-                          Navigator.pop(context);
-                        }, child: Text("OK",style: TextStyle(fontWeight: FontWeight.bold) ))
-                                      ],
-                                    ),
-                                  )
-                            ],
-                          ),
+                      body: Container(
+                        height: double.infinity,
+                        width: double.infinity,
+                        padding: EdgeInsets.all(15),
+                        child: Column(
+                          children: [
+                            Flexible(
+                                child: TextField(
+                              controller: ti,
+                              cursorColor: Colors.green,
+                              decoration: InputDecoration(
+                                  labelText: "Title",
+                                  labelStyle: TextStyle(
+                                      color: Colors.green, fontSize: 20),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                          width: 2, color: Colors.green)),
+                                  border: OutlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Colors.green))),
+                            )),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            Expanded(
+                                flex: 2,
+                                child: TextField(
+                                  controller: ti2,
+                                  maxLines: 35,
+                                  cursorColor: Colors.green,
+                                  decoration: InputDecoration(
+                                      alignLabelWithHint: true,
+                                      labelText: "Description",
+                                      labelStyle: TextStyle(
+                                        color: Colors.green,
+                                        fontSize: 20,
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              width: 2, color: Colors.green)),
+                                      border: OutlineInputBorder(
+                                          borderSide:
+                                              BorderSide(color: Colors.green))),
+                                )),
+                            Container(
+                              height: 100,
+                              width: double.infinity,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text(
+                                        "CANCEL",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      )),
+                                  TextButton(
+                                      onPressed: () {
+                                        ls[i!]["title"] = ti.text;
+                                        ls[i!]["description"] = ti2.text;
+                                        mybox.put(1, ls);
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text("OK",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold)))
+                                ],
+                              ),
+                            )
+                          ],
                         ),
-                     );
-                 
+                      ),
+                    );
                   },
                 );
               },
@@ -147,11 +161,6 @@ class _ReadPageState extends State<ReadPage> {
                 Icons.edit,
                 color: Colors.white,
               )),
-
-
-
-
-
           IconButton(
               onPressed: () {
                 ls.removeAt(i!);
@@ -170,18 +179,32 @@ class _ReadPageState extends State<ReadPage> {
           children: [
             Expanded(
               flex: 8,
-              child: Container(
-                  padding: EdgeInsets.all(5),
-                  child: Text(
+              // child: Container(
+              //     padding: EdgeInsets.all(5),
+              //     child: Text(
+              //       ls[i!]["description"].toString(),
+              //       maxLines: 22,
+              //       overflow: TextOverflow.ellipsis,
+              //       style: TextStyle(
+              //           fontWeight: FontWeight.w400,
+              //           fontSize: 18,
+              //           letterSpacing: 1,
+              //           wordSpacing: 1),
+              //     )),
+              child: ListView(
+                children: [
+                  Text(
                     ls[i!]["description"].toString(),
-                    maxLines: 17,
-                    overflow: TextOverflow.ellipsis,
+                    // maxLines: 22,
+                    // overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 18,
                         letterSpacing: 1,
                         wordSpacing: 1),
-                  )),
+                  )
+                ],
+              ),
             ),
             Divider(),
             Flexible(
@@ -191,10 +214,20 @@ class _ReadPageState extends State<ReadPage> {
               height: 80,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
                 children: [
-                  Text(ls[i!]["time"].toString(),
-                      style: TextStyle(fontWeight: FontWeight.bold)),
+                  Row(
+                    children: [
+                      Text(
+                        "On: ",
+                        style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey.shade600),
+                      ),
+                      Text(ls[i!]["time"].toString(),
+                          style: TextStyle(fontWeight: FontWeight.bold)),
+                    ],
+                  ),
                   Text(ls[i!]["date"].toString(),
                       style: TextStyle(fontWeight: FontWeight.bold))
                 ],

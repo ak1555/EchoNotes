@@ -14,61 +14,61 @@ import 'package:table_calendar/table_calendar.dart';
 //   }
 // }
 
-// class CalendarPage extends StatefulWidget {
-//   @override
-//   _CalendarPageState createState() => _CalendarPageState();
-// }
+class CalendarPage extends StatefulWidget {
+  @override
+  _CalendarPageState createState() => _CalendarPageState();
+}
 
-// class _CalendarPageState extends State<CalendarPage> {
-//   DateTime _selectedDay = DateTime.now();
-//   DateTime _focusedDay = DateTime.now();
+class _CalendarPageState extends State<CalendarPage> {
+  DateTime _selectedDay = DateTime.now();
+  DateTime _focusedDay = DateTime.now();
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text("Calendar Example"),
-//       ),
-//       body: Padding(
-//         padding: const EdgeInsets.all(8.0),
-//         child: Column(
-//           children: [
-//             TableCalendar(
-//               focusedDay: _focusedDay,
-//               firstDay: DateTime.utc(2000, 1, 1),
-//               lastDay: DateTime.utc(2100, 12, 31),
-//               selectedDayPredicate: (day) {
-//                 return isSameDay(_selectedDay, day);
-//               },
-//               onDaySelected: (selectedDay, focusedDay) {
-//                 setState(() {
-//                   _selectedDay = selectedDay;
-//                   _focusedDay = focusedDay; // Update focused day as well
-//                 });
-//               },
-//               calendarStyle: CalendarStyle(
-//                 selectedDecoration: BoxDecoration(
-//                   color: Colors.blue,
-//                   shape: BoxShape.circle,
-//                 ),
-//                 todayDecoration: BoxDecoration(
-//                   color: Colors.orange,
-//                   shape: BoxShape.circle,
-//                 ),
-//               ),
-//             ),
-//             SizedBox(height: 20),
-//             Text(
-//               // "Selected Day: ${_selectedDay.toLocal()}",
-//               "Selected Day: ${_selectedDay.day}",
-//               style: TextStyle(fontSize: 16),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Calendar Example"),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            TableCalendar(
+              focusedDay: _focusedDay,
+              firstDay: DateTime.utc(2000, 1, 1),
+              lastDay: DateTime.utc(2100, 12, 31),
+              selectedDayPredicate: (day) {
+                return isSameDay(_selectedDay, day);
+              },
+              onDaySelected: (selectedDay, focusedDay) {
+                setState(() {
+                  _selectedDay = selectedDay;
+                  _focusedDay = focusedDay; // Update focused day as well
+                });
+              },
+              calendarStyle: CalendarStyle(
+                selectedDecoration: BoxDecoration(
+                  color: Colors.blue,
+                  shape: BoxShape.circle,
+                ),
+                todayDecoration: BoxDecoration(
+                  color: Colors.orange,
+                  shape: BoxShape.circle,
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+            Text(
+              // "Selected Day: ${_selectedDay.toLocal()}",
+              "Selected Day: ${_selectedDay.day}",
+              style: TextStyle(fontSize: 16),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
 
 // import 'dart:math';
 // // import 'package:flutter/material.dart';
@@ -185,8 +185,8 @@ import 'package:table_calendar/table_calendar.dart';
 //   }
 // }
 
-import 'package:flutter/material.dart';
-import 'package:analog_clock_picker/analog_clock_picker.dart';
+// import 'package:flutter/material.dart';
+// import 'package:analog_clock_picker/analog_clock_picker.dart';
 
 // void main() {
 //   runApp(MyApp());
@@ -201,84 +201,85 @@ import 'package:analog_clock_picker/analog_clock_picker.dart';
 //   }
 // }
 
-class TimePickerScreen extends StatefulWidget {
-  @override
-  _TimePickerScreenState createState() => _TimePickerScreenState();
-}
 
-class _TimePickerScreenState extends State<TimePickerScreen> {
-  TimeOfDay? _selectedTime;
+// class TimePickerScreen extends StatefulWidget {
+//   @override
+//   _TimePickerScreenState createState() => _TimePickerScreenState();
+// }
 
-  void _showAnalogTimePicker(BuildContext context) async {
-    AnalogClockController analogClockController = AnalogClockController();
-    final time = await showDialog<TimeOfDay>(
-      context: context,
-      builder: (BuildContext context) {
-        return
-            //AnalogClockPicker(size: BorderSide.strokeAlignCenter,
-            //   use24HourFormat: false, // Set to true for 24-hour format
-            //   initialTime: TimeOfDay.now(),
-            //   title: Text(
-            //     "Pick a Time",
-            //     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            //   ),
-            //   isForce2Digits: true, // Forces single-digit hours to be two digits
-            // );
-            Container(
-          height: 500,
-          width: 500,
-          padding: EdgeInsets.all(25),
-          child: AnalogClockPicker(
-            controller: analogClockController,
-            size: MediaQuery.of(context).size.width * 0.74,
-            // size: 100,
-            secondHandleColor: Colors.red,
-            minutesHandleColor: Colors.black,
-            hourHandleColor: Colors.black,
-            // clockBackground: Image.asset(
-            //   // AssetImage.clockBackground,
+// class _TimePickerScreenState extends State<TimePickerScreen> {
+//   TimeOfDay? _selectedTime;
 
-            // ),
-            onClockChange: (date) {
-              //TODO : Do Something
-            },
-          ),
-        );
-      },
-    );
+//   void _showAnalogTimePicker(BuildContext context) async {
+//     AnalogClockController analogClockController = AnalogClockController();
+//     final time = await showDialog<TimeOfDay>(
+//       context: context,
+//       builder: (BuildContext context) {
+//         return
+//             //AnalogClockPicker(size: BorderSide.strokeAlignCenter,
+//             //   use24HourFormat: false, // Set to true for 24-hour format
+//             //   initialTime: TimeOfDay.now(),
+//             //   title: Text(
+//             //     "Pick a Time",
+//             //     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+//             //   ),
+//             //   isForce2Digits: true, // Forces single-digit hours to be two digits
+//             // );
+//             Container(
+//           height: 500,
+//           width: 500,
+//           padding: EdgeInsets.all(25),
+//           child: AnalogClockPicker(
+//             controller: analogClockController,
+//             size: MediaQuery.of(context).size.width * 0.74,
+//             // size: 100,
+//             secondHandleColor: Colors.red,
+//             minutesHandleColor: Colors.black,
+//             hourHandleColor: Colors.black,
+//             // clockBackground: Image.asset(
+//             //   // AssetImage.clockBackground,
 
-    if (time != null) {
-      setState(() {
-        _selectedTime = time;
-      });
-    }
-  }
+//             // ),
+//             onClockChange: (date) {
+//               //TODO : Do Something
+//             },
+//           ),
+//         );
+//       },
+//     );
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Analog Clock Picker')),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              _selectedTime == null
-                  ? 'No time selected'
-                  : 'Selected Time: ${_selectedTime!.format(context)}',
-              style: TextStyle(fontSize: 24),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () => _showAnalogTimePicker(context),
-              child: Text('Pick Time'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
+//     if (time != null) {
+//       setState(() {
+//         _selectedTime = time;
+//       });
+//     }
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(title: Text('Analog Clock Picker')),
+//       body: Center(
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: [
+//             Text(
+//               _selectedTime == null
+//                   ? 'No time selected'
+//                   : 'Selected Time: ${_selectedTime!.format(context)}',
+//               style: TextStyle(fontSize: 24),
+//             ),
+//             SizedBox(height: 20),
+//             ElevatedButton(
+//               onPressed: () => _showAnalogTimePicker(context),
+//               child: Text('Pick Time'),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 
 
