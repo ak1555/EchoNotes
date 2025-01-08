@@ -44,23 +44,12 @@ class _TaskTaskState extends State<TaskTask> {
       print(year);
     });
   }
-// Timer? _timer;
-//    void tmer() {
-//     _timer = Timer.periodic(
-//       Duration(seconds: 1),
-//       (timer) {
-//         settime();
-//       },
-//     );
-//   }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     settime();
-    // frequentupdate();
-    // tmer();
   }
 
   @override
@@ -109,7 +98,6 @@ class _TaskTaskState extends State<TaskTask> {
                 }
                 contoller1.clear();
                 controller2.clear();
-                // Navigator.pop(context);
                 Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Smple(),));
               },
               icon: Icon(
@@ -174,8 +162,6 @@ class _TaskTaskState extends State<TaskTask> {
                     onTap: () {
                       showDialog(context: context, builder: (context) {
                         return
-                        //  AlertDialog(
-                        //   title: 
                           Scaffold(
                             body: Container(
                               height: double.infinity,
@@ -221,7 +207,6 @@ class _TaskTaskState extends State<TaskTask> {
                                 ),
                                 SizedBox(height: 20),
                                 Text(
-                                  // "Selected Day: ${_selectedDay.toLocal()}",
                                   "Current Day: ${DateTime.now().day}/${DateTime.now().month}/${DateTime.now().year}",
                                   style: TextStyle(fontSize: 16),
                                 ),
@@ -246,7 +231,6 @@ class _TaskTaskState extends State<TaskTask> {
                   ),
 
                   GestureDetector(
-                    // onTap: 
                     child: Text(
                       "$hour:$minute",
                       style: TextStyle(color: Colors.green),

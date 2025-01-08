@@ -30,10 +30,10 @@ class _HIpageState extends State<HIpage> {
     _timer = Timer.periodic(
       Duration(seconds: 1),
       (timer) {
-        // getdata();
         initfun();
       },
     );
+    // Timer.run(() => initfun,);
   }
 
   void initState() {
@@ -91,8 +91,6 @@ class _HIpageState extends State<HIpage> {
                                     letterSpacing: 1),
                               ),
                             ),
-
-                            // value: selectedValue,
                             items: [
                               DropdownMenuItem(
                                 value: 'Edit',
@@ -151,10 +149,10 @@ class _HIpageState extends State<HIpage> {
                                                     height: 15,
                                                   ),
                                                   Expanded(
-                                                      flex: 2,
+                                                      flex: 10,
                                                       child: TextField(
                                                         controller: ti2,
-                                                        // maxLines: 35,
+                                                        maxLines: 40,
                                                         cursorColor:
                                                             Colors.green,
                                                         decoration:
@@ -241,25 +239,21 @@ class _HIpageState extends State<HIpage> {
                             ],
                             onChanged: (String? newValue) {
                               setState(() {
-                                // selectedValue = newValue;
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                      content: Text('Selected: $newValue')),
-                                );
+                                // ScaffoldMessenger.of(context).showSnackBar(
+                                //   SnackBar(
+                                //       content: Text('Selected: $newValue')),
+                                // );
                               });
                             },
                           ),
                         ],
                       ),
-                      // SizedBox(height: 2,),
-
                       Text(ls[index]['description'].toString(),
                           maxLines: 10,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 17,
-                              // color: Colors.black87,
                               letterSpacing: 0)),
                       SizedBox(
                         height: 2,

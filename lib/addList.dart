@@ -122,11 +122,9 @@ class _ListTaskState extends State<ListTask> {
             ),
             SizedBox(
               height: 80,
-              // color: Colors.pink,
               child: Expanded(
                   child: TextField(
                 controller: _controller,
-                // maxLines: 30,
                 cursorColor: Colors.green,
                 decoration: InputDecoration(
                     alignLabelWithHint: true,
@@ -178,24 +176,6 @@ class _ListTaskState extends State<ListTask> {
                 );
               },
             )),
-            //  Flexible(
-            //    child: Container(
-            //                  height: 80,
-            //                  width: double.infinity,
-            //                  padding: EdgeInsets.only(left: 15, right: 15),
-            //                  child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //     children: [
-            //       Text("$day-$month-$year".toString(),
-            //           style: TextStyle(color: Colors.green)),
-            //       Text(
-            //         "$hour:$minute",
-            //         style: TextStyle(color: Colors.green),
-            //       )
-            //     ],
-            //                  ),
-            //                ),
-            //  )
           ],
         ),
       ),

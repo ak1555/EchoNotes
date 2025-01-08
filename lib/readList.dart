@@ -29,14 +29,11 @@ class _ListReadState extends State<ListRead> {
           li = ls[i!]['description'];
         });
         for (int i = 0; i <= li.length; i++) {
-          // mp[i]={li[i]:false};
           ll = List.generate(li.length, (index) => false);
         }
       } catch (e) {
         print(e);
       }
-      // li=mp['descri']
-      // print(li);
     }
   }
 
@@ -83,7 +80,6 @@ class _ListReadState extends State<ListRead> {
               TextEditingController ti2 = TextEditingController();
               setState(() {
                 ti.text = ls[i!]["title"];
-                // ti2.text=ls[i!]["description"];
                 llii = ls[i!]["description"];
               });
 
@@ -125,11 +121,9 @@ class _ListReadState extends State<ListRead> {
                           ),
                           SizedBox(
                             height: 80,
-                            // color: Colors.pink,
                             child: Expanded(
                                 child: TextField(
                               controller: ti2,
-                              // maxLines: 30,
                               cursorColor: Colors.green,
                               decoration: InputDecoration(
                                   alignLabelWithHint: true,
@@ -146,9 +140,6 @@ class _ListReadState extends State<ListRead> {
                                           BorderSide(color: Colors.green)),
                                   suffixIcon: IconButton(
                                       onPressed: () {
-                                        // setState(() {
-                                        //   llii.add(ti2.text);
-                                        // });
                                         setState(() {
                                           llii.add(ti2.text);
                                           ti2.clear();
@@ -276,7 +267,6 @@ class _ListReadState extends State<ListRead> {
               padding: EdgeInsets.only(left: 15, right: 15),
               height: 90,
               child: Row(
-                // crossAxisAlignment: CrossAxisAlignment.baseline,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
                 children: [

@@ -30,7 +30,6 @@ class _TextTasksState extends State<TextTasks> {
       minute = DateTime.now().minute.toString().padLeft(2, '0');
       month = DateTime.now().month.toString().padLeft(2, '0');
       year = DateTime.now().year;
-      //  date = dateToday.toString().substring(0,10);
       print(day);
       print(month);
       print(year);
@@ -88,8 +87,6 @@ class _TextTasksState extends State<TextTasks> {
                   controller2.clear();
                   Navigator.pop(context);
                 } else {
-                  // showBottomSheet(context: context, builder: (context) {
-                  // },);
                 }
               },
               icon: Icon(

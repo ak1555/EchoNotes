@@ -29,9 +29,6 @@ class _TaskReadState extends State<TaskRead> {
     _timer = Timer.periodic(
       Duration(seconds: 1),
       (timer) {
-        // if(Duration()==Duration(seconds: 5).inSeconds   ){
-
-        // }
         setState(() {
           getdata();
         });
@@ -110,10 +107,10 @@ class _TaskReadState extends State<TaskRead> {
                             height: 15,
                           ),
                           Expanded(
-                              flex: 2,
+                              flex: 10,
                               child: TextField(
                                 controller: ti2,
-                                maxLines: 35,
+                                maxLines: 50,
                                 cursorColor: Colors.green,
                                 decoration: InputDecoration(
                                     alignLabelWithHint: true,
@@ -188,7 +185,6 @@ class _TaskReadState extends State<TaskRead> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            // SizedBox(height: 15,),
             Expanded(
               flex: 8,
               child: Container(
@@ -204,25 +200,6 @@ class _TaskReadState extends State<TaskRead> {
                         wordSpacing: 1),
                   )),
             ),
-            // Flexible(
-            //     child: Container(
-            //   alignment: Alignment.center,
-            //   padding: EdgeInsets.only(left: 15, right: 15),
-            //   height: 90,
-            //   child: Row(
-            //     // crossAxisAlignment: CrossAxisAlignment.baseline,
-            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-            //     children: [
-            //       Text(
-            //         ls[i!]["time"].toString(),
-            //         style: TextStyle(fontWeight: FontWeight.bold),
-            //       ),
-            //       Text(ls[i!]["date"].toString(),
-            //           style: TextStyle(fontWeight: FontWeight.bold))
-            //     ],
-            //   ),
-            // ))
           ],
         ),
       ),

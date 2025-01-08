@@ -38,6 +38,7 @@ class _HeypageState extends State<Heypage> {
         swtdata();
       },
     );
+    // Timer.run(() =>swtdata);
   }
 
   @override
@@ -72,8 +73,6 @@ class _HeypageState extends State<Heypage> {
                   child: Container(
                     padding: EdgeInsets.all(5),
                     decoration: BoxDecoration(
-                        // color: Colors.red.shade100,
-                        //  color: Colors.primaries[Random().nextInt(Colors.primaries.length)],
                         color: Colors.red.shade300,
                         borderRadius: BorderRadius.circular(15)),
                     child: Column(
@@ -81,9 +80,6 @@ class _HeypageState extends State<Heypage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            // SizedBox(
-                            //   width: 1,
-                            // ),
                             Text(
                               ls[index]['title'].toString(),
                               overflow: TextOverflow.ellipsis,
@@ -92,11 +88,6 @@ class _HeypageState extends State<Heypage> {
                                   fontSize: 18,
                                   letterSpacing: 1),
                             ),
-                            // IconButton(
-                            //   padding: EdgeInsets.all(0),
-                            //   onPressed: () {},
-                            //   icon: Icon(Icons.more_vert),
-                            // )
                           ],
                         ),
                         SizedBox(
@@ -122,7 +113,6 @@ class _HeypageState extends State<Heypage> {
                 );
               },
             ))
-        //  Center(child: Text("list"),),
         );
   }
 }

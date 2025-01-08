@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:echonotes/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -32,9 +33,7 @@ class _OoipageState extends State<Ooipage> {
     _timer = Timer.periodic(
       Duration(seconds: 1),
       (timer) {
-        // getdata();
         initfun();
-        // a();
       },
     );
   }
@@ -50,16 +49,13 @@ class _OoipageState extends State<Ooipage> {
 
   void vv() {
     listlll = List.generate(ls.length, (index) => false);
-    // print(listlll);
     List o = [];
 
     try {
       List o = [];
-      // print(o.length);
       if (mybox.get(11) != null) {
         o = mybox.get(11);
         for (int i = 0; i <= o.length; i++) {
-          // print(i);
           if (o[i] == true) {
             listlll[i] = true;
           }
@@ -68,7 +64,6 @@ class _OoipageState extends State<Ooipage> {
     } catch (e) {
       print(e);
     }
-    // print(listlll);
   }
 
   void initState() {
@@ -214,7 +209,6 @@ class _OoipageState extends State<Ooipage> {
                                                   child: Column(
                                                     children: [
                                                       Flexible(
-                                                          // flex: 1,
                                                           child: TextField(
                                                         controller: ti,
                                                         cursorColor:
@@ -241,10 +235,10 @@ class _OoipageState extends State<Ooipage> {
                                                         height: 15,
                                                       ),
                                                       Expanded(
-                                                          flex: 2,
+                                                          flex: 10,
                                                           child: TextField(
                                                             controller: ti2,
-                                                            maxLines: 35,
+                                                            maxLines: 50,
                                                             cursorColor:
                                                                 Colors.green,
                                                             decoration:
@@ -330,11 +324,6 @@ class _OoipageState extends State<Ooipage> {
                                           List m = mybox.get(11);
                                           m.removeAt(index);
                                           mybox.put(11, m);
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            SnackBar(
-                                                content: Text('Task Deleted')),
-                                          );
                                         },
                                         child: Text('Delete')),
                                   ),
@@ -393,185 +382,6 @@ class _OoipageState extends State<Ooipage> {
                   ),
                 );
               },
-            ))
-        // Center(child: Text("task"),),
-        );
+            )));
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import 'dart:async';
-
-// import 'package:flutter/material.dart';
-// import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-// import 'package:hive_flutter/adapters.dart';
-
-// class Ooipage extends StatefulWidget {
-//   const Ooipage({super.key});
-
-//   @override
-//   State<Ooipage> createState() => _OoipageState();
-// }
-
-// class _OoipageState extends State<Ooipage> {
-//   var mybox = Hive.box('mybox');
-//   List ls = [];
-//   List ll=[];
-//   @override
-//   void initfun() {
-//     if (mybox.get(3) != null) {
-//       setState(() {
-//         ls = mybox.get(3);
-//       });
-//     }
-//   }
-
-//   Timer? _timer;
-
-//   void tmer() {
-//     _timer = Timer.periodic(
-//       Duration(seconds: 1),
-//       (timer) {
-//         // getdata();
-//         initfun();
-//         // a();
-//       },
-//     );
-//   }
-//  void a(){
-//    ll = List.generate(ls.length, (index) => false);
-//    ChangeNotifier();
-//  }
-
-//   void initState() {
-//     // TODO: implement initState
-//     super.initState();
-//     initfun();
-//     // tmer();
-//     a();
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//         body: Container(
-//             height: double.infinity,
-//             width: double.infinity,
-//             child: MasonryGridView.builder(
-//               itemCount: ls.length,
-//               mainAxisSpacing: 5,
-//               crossAxisSpacing: 5,
-//               gridDelegate: SliverSimpleGridDelegateWithFixedCrossAxisCount(
-//                   crossAxisCount: 2),
-//               itemBuilder: (context, index) {
-               
-//               return  GestureDetector(
-//                   onTap: () {
-//                     Navigator.pushNamed(context, "task",
-//                         arguments: index.toString());
-//                   },
-//                   child: Container(
-//                     padding: EdgeInsets.all(5),
-//                     decoration: BoxDecoration(
-//                         color: Colors.red.shade300,
-//                         borderRadius: BorderRadius.circular(15)),
-//                     child: Column(
-//                       mainAxisAlignment: MainAxisAlignment.start,
-//                       children: [
-//                         Row(
-//                           mainAxisAlignment: MainAxisAlignment.center,
-//                           children: [
-//                             SizedBox(
-//                               width: 1,
-//                             ),
-//                             Text(
-//                               ls[index]['title'].toString(),
-//                               overflow: TextOverflow.ellipsis,
-//                               style: TextStyle(
-//                                   fontWeight: FontWeight.w600,
-//                                   fontSize: 18,
-//                                   letterSpacing: 1),
-//                             ),
-//                             IconButton(
-//                               padding: EdgeInsets.all(0),
-//                               onPressed: () {
-//                                 setState(() {
-//                                   ll[index]=!ll[index];
-//                                 });
-//                               },
-//                               icon:ll[index]? Icon(Icons.keyboard_arrow_down_outlined):Icon(Icons.keyboard_arrow_up),
-//                             )
-//                           ],
-//                         ),
-//                         SizedBox(
-//                           height: 10,
-//                         ),
-                   
-//                         // SizedBox(
-//                         //   height: 8,
-//                         // ),
-//                         Container(
-//                           padding: EdgeInsets.only(left: 5),
-//                           width: double.infinity,
-//                           child: Column(
-//                             crossAxisAlignment: CrossAxisAlignment.start,
-//                             children: [
-//                               Text(
-//                                 ls[index]["date"].toString(),
-//                                 style: TextStyle(fontWeight: FontWeight.bold,fontSize: 13),
-//                               ),
-//                               Text(ls[index]["time"].toString(),
-//                                   style:
-//                                       TextStyle(fontWeight: FontWeight.bold,fontSize: 13)),
-//                             ],
-//                           ),
-//                         ),
-//                         SizedBox(height: 10,),
-//                            ll[index]?  Text(ls[index]['description'].toString(),
-//                             maxLines: 5,
-//                             style: TextStyle(
-//                                 fontWeight: FontWeight.w500,
-//                                 fontSize: 17,
-//                                 overflow: TextOverflow.ellipsis,
-//                                 letterSpacing: 0)):SizedBox(height: 1,),
-//                                 SizedBox(height: 10,),
-//                                ll[index]?  Text("Task ended",
-//                                   style:
-//                                       TextStyle(fontWeight: FontWeight.bold,fontSize: 13)):SizedBox(height: 1,),
-//                                 SizedBox(height: ll[index]? 8:0,),
-//                       ],
-//                     ),
-//                   ),
-//                 );
-//               },
-//             ))
-//         // Center(child: Text("task"),),
-//         );
-//   }
-// }

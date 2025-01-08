@@ -103,10 +103,10 @@ class _ReadPageState extends State<ReadPage> {
                               height: 15,
                             ),
                             Expanded(
-                                flex: 2,
+                                flex: 10,
                                 child: TextField(
                                   controller: ti2,
-                                  maxLines: 35,
+                                  maxLines: 50,
                                   cursorColor: Colors.green,
                                   decoration: InputDecoration(
                                       alignLabelWithHint: true,
@@ -179,24 +179,10 @@ class _ReadPageState extends State<ReadPage> {
           children: [
             Expanded(
               flex: 8,
-              // child: Container(
-              //     padding: EdgeInsets.all(5),
-              //     child: Text(
-              //       ls[i!]["description"].toString(),
-              //       maxLines: 22,
-              //       overflow: TextOverflow.ellipsis,
-              //       style: TextStyle(
-              //           fontWeight: FontWeight.w400,
-              //           fontSize: 18,
-              //           letterSpacing: 1,
-              //           wordSpacing: 1),
-              //     )),
               child: ListView(
                 children: [
                   Text(
                     ls[i!]["description"].toString(),
-                    // maxLines: 22,
-                    // overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 18,

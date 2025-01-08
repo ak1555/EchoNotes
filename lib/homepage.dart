@@ -85,8 +85,6 @@ class _SmpleState extends State<Smple> with TickerProviderStateMixin {
               children: [
                 FloatingActionButton.small(
                   onPressed: () {
-                    // Navigator.of(context).push(MaterialPageRoute(
-                    //   builder: (context) => TextTasks(),
                     Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => TaskTask(),
                     ));
@@ -108,9 +106,6 @@ class _SmpleState extends State<Smple> with TickerProviderStateMixin {
                 ),
                 FloatingActionButton(
                   onPressed: () {
-                    // Navigator.of(context).push(MaterialPageRoute(
-                    //   builder: (context) => TaskTask(),
-
                     Navigator.of(context).push(MaterialPageRoute(
                       builder: (context) => TextTasks(),
                     ));
